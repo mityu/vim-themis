@@ -171,7 +171,7 @@ function! s:sid2sfuncs(sid) abort
   let r = {}
   " ->         ^--------____________-
   "    function <SNR>14_functionname(args, ...)
-  let pattern = printf('\m^function\s<SNR>%d_\zs\w\{-}\ze(', a:sid)
+  let pattern = printf('\m^\%(function\|def\)\s<SNR>%d_\zs\w\{-}\ze(', a:sid)
   for fname in map(fs, 'matchstr(v:val, pattern)')
     let r[fname] = function(s:_sfuncname(a:sid, fname))
   endfor
